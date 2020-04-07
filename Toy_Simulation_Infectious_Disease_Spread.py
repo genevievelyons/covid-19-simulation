@@ -22,9 +22,9 @@ import datetime
 # Set parameters
 #####################
 
-N = 2000                    #population size
+N = 500                    #population size
 p_inf = 0.5                #probability of infection when in contact with an infected individual
-r_inf = 0.002               #infection radius of an individual
+r_inf = 0.05               #infection radius of an individual
 t_inf = 1                   #time that an individual remains contagious
 p_death = 0.02              #probability of death while infected
 
@@ -39,7 +39,7 @@ def isolation_fun(t):
 
 t = 0
 dt = 0.1
-Tfinal = 5 #end of simulation; set as 10 for final
+Tfinal = 6 #end of simulation; set as 10 for final
 p = 1
 
 
@@ -76,7 +76,7 @@ ts = []
 
 plt.figure(figsize = (30,30))
 
-while t < Tfinal:
+while t <= Tfinal:
         
     ###
     #Plot
@@ -85,7 +85,7 @@ while t < Tfinal:
     plt.subplot(10,10,p)
     plt.scatter(x[infected == 0], y[infected == 0], s = 0.5, c = "g", label = "Not Infected")
     plt.scatter(x[infected == 1], y[infected == 1], s = 0.5, c = "r", label = "Infected")
-    plt.title("t = " + str(t))
+    plt.title("t = " + str(round(t,1)))
     #plt.legend()
     
     
@@ -166,8 +166,8 @@ plt.show();
 #%%
 
 #Plot Infections
-plt.plot(ts, num_infected)
-plt.title("Number Infected at time t")
+plt.plot(ts, np.array(num_infected) / N)
+plt.title("Percent of Population Infected at time t")
 plt.show();
 
 #Plot Deaths
