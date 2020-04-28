@@ -2,7 +2,7 @@
 
 Note: This is a toy simulation of the spread of an infectious disease, and is not intended to represent any particular geographic location or use parameters that are scientifically accurate for COVID-19.
 
-## Running the Euclidean Distance Code
+## Running the Euclidean Distance Code: Serial Implementation
 
 The code takes argument of N members of the population (defaults to 200 if no number is given)
 
@@ -18,6 +18,29 @@ Run the code, including the members of the population (e.g., N = 100):
 `./euclidean 100`
 
 The elapsed time will be printed after the results.
+
+## Running the Euclidean Distance Code: MPI Implementation
+
+Set up a distributed AWS cluster following IG7.
+
+First, increase the limit:
+`ulimit -s unlimited`
+
+Then, export the ports:
+
+`export MPICH_PORT_RANGE=10000:10100`
+
+`export MPIR_CVAR_CH3_PORT_RANGE=10000:10100`
+
+Compile the code on mpiuser@master:
+`mpicc -DUSE_CLOCK euclidean_mpi.c -lm -o euclidean_mpi`
+
+Move it to the cloud folder: 
+`cp euclidean_mpi cloud && cd cloud`
+
+Run the code:
+`mpirun -np 4 -hosts master2,node2 ./euclidean_mpi 100 | sort -V`
+
 
 ### References
 
