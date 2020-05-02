@@ -19,7 +19,7 @@ void contact( double* x, double *y,double* contact,int N,double r_inf) {
          r[i][j] = dis(x[i], y[i], x[j], y[j]);
          //printf("r[%d][%d] = %f\n", i,j, r[i][j]);
          //Contact
-         if(r[i][j]<r_inf){contact[i*10+j]=1;}
+         if(r[i][j]<r_inf){contact[i*N+j]=1;}
        
       
       }
