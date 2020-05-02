@@ -41,6 +41,20 @@ Move it to the cloud folder:
 Run the code:
 `mpirun -np 4 -hosts master2,node2 ./euclidean_mpi 100 | sort -V`
 
+## Python/C pipeline
+
+Compile：
+
+`gcc -fPIC -c euclidean_IO.c `  
+`gcc -shared -o euclidean_IO.so test.o`
+
+Calling from python:
+`python simulation.py`
+
+
+
+
+
 
 ### References
 
