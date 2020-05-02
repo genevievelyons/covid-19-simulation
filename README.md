@@ -46,7 +46,7 @@ Run the code:
 Compile：
 
 `gcc -fPIC -c euclidean_IO.c `  
-`gcc -shared -o euclidean_IO.so test.o`
+`gcc -shared -o euclidean_IO.so euclidean_IO.o`
 
 Calling from python:
 `python simulation.py`
