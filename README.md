@@ -57,6 +57,19 @@ Move it to the cloud folder:
 Run the code:
 `mpirun -np 4 -hosts master2,node2 ./euclidean_mpi 100 | sort -V`
 
+## Running the Euclidean Distance Code: MPI+OpenMP Implementation
+
+Same setup as 'MPI Implementation'
+
+Compile the code on mpiuser@master:
+`mpicc -DUSE_CLOCK -fopenmp euclidean_mpi_omp.c timing.c -lm -o eud_mpi_omp`
+
+Move it to the cloud folder: 
+`cp eud_mpi_omp cloud && cd cloud`
+
+Run the code:
+`mpirun -np 4 -hosts master,node1 -genv OMP_NUM_THREADS 2 ./eud_mpi_omp 100`
+
 ## Python/C pipeline
 
 Compile：
