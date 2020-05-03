@@ -19,6 +19,22 @@ Run the code, including the members of the population (e.g., N = 100):
 
 The elapsed time will be printed after the results.
 
+## Running the Euclidean Distance Code: OpenMP Implementation
+
+I ran it on a t2.2xlarge AWS Ubuntu 16.04 instance. Upload both `euclidean_omp.c` and `timing.c`.
+
+First, increase the limit:
+`ulimit -s unlimited`
+
+Compile the code:
+`gcc -DUSE_CLOCK -fopenmp euclidean_omp.c timing.c -lm -o eud_omp`
+
+Set the number of threads:
+`export OMP_NUM_THREADS=8`
+
+Run the code, including the members of the population (e.g., N = 100):
+`./eud_omp 100`
+
 ## Running the Euclidean Distance Code: MPI Implementation
 
 Set up a distributed AWS cluster following IG7.
