@@ -74,7 +74,7 @@ We will demonstrate parallelization using a hybrid system of shared and distribu
 
 Create a Multi-Node Cluster on AWS using a t2.2xlarge AWS Ubuntu 16.04 instance. Follow the instructions found in [Infrastructure Guide 7: MPI on AWS](https://harvard-iacs.github.io/2020-CS205/lab/I7/guide/Guide_I7.pdf). 
 
-Upload all files found in the `code` folder in this repository. 
+Upload all files found in the `code` folder in this repository. The C code `euclidean.c`, `euclidean_omp.c`, `euclidean_mpi.c`, and `euclidean_mpi_omp.c` take argument of N members of the population. 
 
 **Instance Specs:**
 
@@ -82,14 +82,10 @@ Upload all files found in the `code` folder in this repository.
 
 ### Running the Euclidean Distance Code: Serial Implementation
 
-The code takes argument of N members of the population. 
-
-
-
-First, increase the limit:
+First, increase the user limit:
 `ulimit -s unlimited`
 
-Compile the code:
+Compile the serial code:
 `gcc -DUSE_CLOCK euclidean.c -lm -o euclidean`
 
 Run the code, including the members of the population (e.g., N = 100):
@@ -99,15 +95,13 @@ The elapsed time will be printed after the results.
 
 ### Running the Euclidean Distance Code: OpenMP Implementation
 
-I ran it on a t2.2xlarge AWS Ubuntu 16.04 instance. Upload both `euclidean_omp.c` and `timing.c`.
-
-First, increase the limit:
+First, increase the user limit:
 `ulimit -s unlimited`
 
 Compile the code:
 `gcc -DUSE_CLOCK -fopenmp euclidean_omp.c timing.c -lm -o eud_omp`
 
-Set the number of threads:
+Set the number of threads (e.g., 8):
 `export OMP_NUM_THREADS=8`
 
 Run the code, including the members of the population (e.g., N = 100):
@@ -115,12 +109,17 @@ Run the code, including the members of the population (e.g., N = 100):
 
 ### Running the Euclidean Distance Code: MPI Implementation
 
-Set up a distributed AWS cluster following IG7.
+First, ensure that both your master and node have been created and are running. Also be sure that your cloud is mounted as detailed in [Infrastructure Guide 7: MPI on AWS](https://harvard-iacs.github.io/2020-CS205/lab/I7/guide/Guide_I7.pdf). 
 
-First, increase the limit:
+Enter the the `mpiuser` that you created:
+`su - mpiuser`
+
+In `mpiuser@master`:
+
+First, increase the user limit:
 `ulimit -s unlimited`
 
-Then, export the ports:
+Export the ports so the master and node can communicate:
 
 `export MPICH_PORT_RANGE=10000:10100`
 
@@ -132,12 +131,26 @@ Compile the code on mpiuser@master:
 Move it to the cloud folder: 
 `cp euclidean_mpi cloud && cd cloud`
 
-Run the code:
-`mpirun -np 4 -hosts master2,node2 ./euclidean_mpi 100`
+Run the code, including the members of the population (e.g., N = 100) and the number of processes (e.g., 4):
+`mpirun -np 4 -hosts master,node1 ./euclidean_mpi 100`
 
-### Running the Euclidean Distance Code: MPI+OpenMP Implementation
+### Running the Euclidean Distance Code: MPI+OpenMP Hybrid Implementation
 
-Same setup as 'MPI Implementation'
+First, ensure that both your master and node have been created and are running. Also be sure that your cloud is mounted as detailed in [Infrastructure Guide 7: MPI on AWS](https://harvard-iacs.github.io/2020-CS205/lab/I7/guide/Guide_I7.pdf). 
+
+Enter the the `mpiuser` that you created:
+`su - mpiuser`
+
+In `mpiuser@master`:
+
+First, increase the user limit:
+`ulimit -s unlimited`
+
+Export the ports so the master and node can communicate:
+
+`export MPICH_PORT_RANGE=10000:10100`
+
+`export MPIR_CVAR_CH3_PORT_RANGE=10000:10100`
 
 Compile the code on mpiuser@master:
 `mpicc -DUSE_CLOCK -fopenmp euclidean_mpi_omp.c timing.c -lm -o eud_mpi_omp`
@@ -145,17 +158,21 @@ Compile the code on mpiuser@master:
 Move it to the cloud folder: 
 `cp eud_mpi_omp cloud && cd cloud`
 
-Run the code:
+Run the code, including the members of the population (e.g., N = 100), the number of processes (e.g., 4), and the number of threads (e.g., 2):
 `mpirun -np 4 -hosts master,node1 -genv OMP_NUM_THREADS 2 ./eud_mpi_omp 100`
 
 ### Python/C pipeline
 
-Compile：
 
-`gcc -fPIC -c euclidean_IO.c `  
+First, increase the user limit:
+`ulimit -s unlimited`
+
+Compile the code：
+
+`gcc -fPIC -c euclidean_IO.c`  
 `gcc -shared -o euclidean_IO.so euclidean_IO.o`
 
-Calling from python:
+Update any desired parameters or variable in the python simulation script. Run the simulation script, calling the C code from Python:
 `python simulation.py`
 
 
