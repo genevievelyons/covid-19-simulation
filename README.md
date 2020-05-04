@@ -46,22 +46,41 @@ The social distancing function determines the behavior of each individual. A con
 
 **Time Complexity:** <img src="https://render.githubusercontent.com/render/math?math=O(N^2)">
 
-**Code Profiling:** There is a very clear bottleneck in the Euclidean Distance calculation, which is calculated between every individual in the population. 
+**Code Profiling:** There is a very clear bottleneck in the Euclidean Distance calculation, which is calculated between every individual in the population. This is an embarrassingly parallel problem where each individual distance may be calculated independently of one another. 
+
+The parallelizable fraction of the existing code is **92%**.
+
+![](./Visualizations/02_Code_Profile.png)
 
 
 ### Design
 
+To fully exploit powerful parallelism techniques for Big Compute, we calculate the Euclidean Distance portion of the code in C. The rest of the simulation is in Python however, so we create a Python/C pipeline by which we run the simulation through Python, but the Euclidean Distance calculation is exported to parallelized C code. 
 
+Here is a snippet of the C code that will be parallelized in subsequent sections:
 
+![](./Visualizations/03_Code_Snip.png)
+
+We will demonstrate parallelization using a hybrid system of shared and distributed memory.
+
+![](./Visualizations/04_Design_Plan.png)
 
 
 ## Replicability Information 
+
+### Amazon Web Services Instance
+
+I ran it on a t2.2xlarge AWS Ubuntu 16.04 instance. You will need to upload both `euclidean.c` and `timing.h`.
+
+**Instance Specs:**
+
+
 
 ### Running the Euclidean Distance Code: Serial Implementation
 
 The code takes argument of N members of the population (defaults to 200 if no number is given)
 
-I ran it on a t2.2xlarge AWS Ubuntu 16.04 instance. You will need to upload both `euclidean.c` and `timing.h`.
+
 
 First, increase the limit:
 `ulimit -s unlimited`
