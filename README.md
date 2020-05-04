@@ -16,28 +16,31 @@ Through this simulation study, we seek to understand how these measures may help
 
 ### SIR Model with a Simple Spatial Network
 
-All individuals are initially susceptible
-pandemic is initiated by a single infected individual at a random location in the entwork
-each individual has a probability of being infected by all individuals in its infection neighborhood, calculated by the Euclidean Distance:
+The simulation uses a standard SIR model with a simple spatial network. The SIR model is a simple compartmental epidemiological model with three main elements:
 
+**Susceptible (S)**, where the individual has not yet been infected, and has no immunity.
 
+**Infected (I)**, where the individual is currently infected and contagious to Susceptible neighbors.
+
+**Removed (R)**, where the removal from further participation in the process is assumed to be permanent, due to death.
+
+In our model, all individuals are initially susceptible. The pandemic is initiated by a single infected individual at a random location in the network. Each individual has a probability *p* of being infected by any individual in its infection neighborhood, calculated by the Euclidean Distance:
 
 <img src="https://render.githubusercontent.com/render/math?math={(x,y) s.t. \sqrt{(x-x_0)^2 %2B (y-y_0)^2} \leq r}">
 
-We assume the probability of infection *p* is constant per time step, and each infected individual has a probability *q* to be removed from the population through death. After recovery, each individual becomes immune to the disease.
+We assume that this probability of infection *p* is constant per time step, and each infected individual has a probability *q* to be removed from the population through death. After recovery, each individual becomes immune to the disease. The simulation is conducted over sufficient discrete time steps to run the pandemic to completion.
 
-Susceptible (S) -- has not yet been infected, and has no immunity
-Infected (I) -- currently "sick" and contagious to Susceptible neighbors
-Removed (R), where the removal from further participation in the process is assumed to be permanent, due to death
-Infection neighborhood 
-
-Social distance function 
-
-Sufficient discrete time steps to run the pandemic to completion
+The social distancing function determines the behavior of each individual. A constant of 1 for each individual indicates that all individuals are moving about as normal. We will explore the effect of changing the social behavior of some individuals to simulate social distancing.
 
 
+### Need for Big Compute
 
-## Simulation Results
+
+### Design
+
+
+
+
 
 ## Replicability Information 
 
@@ -121,6 +124,9 @@ Calling from python:
 
 
 ## Experiments
+
+
+## Simulation Results
 
 
 ## Conclusions and Recommendations
