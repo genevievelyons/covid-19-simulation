@@ -1,8 +1,47 @@
 # Flattening the Curve: A Simulation Study of the Spread of COVID-19
+### Jingyi Chen, Genevieve Lyons, Rebecca Youngerman, Huahua Zheng
+### Harvard T.H. Chan School of Public Health
 
 Note: This is a toy simulation of the spread of an infectious disease, and is not intended to represent any particular geographic location or use parameters that are scientifically accurate for COVID-19.
 
-## Running the Euclidean Distance Code: Serial Implementation
+## Introduction
+
+### Background
+
+The purpose of this simulation is to analyze the spread of infectious diseases such as COVID-19 to better understand the way that social distancing may slow the spread for various cities in the United States.
+
+COVID-19 is a respiratory illness that spreads from person to person. Transmission occurs through respiratory droplets, and spread is more likely when people are in close contact with one another. In March, the US government issued a number of social distancing policies and guidelines. These guidelines encourage us to avoid mass gatherings, stay in our homes, and only leave for essential needs. 
+
+Through this simulation study, we seek to understand how these measures may help to combat the spread of an infectious disease such as this one. 
+
+### SIR Model with a Simple Spatial Network
+
+All individuals are initially susceptible
+pandemic is initiated by a single infected individual at a random location in the entwork
+each individual has a probability of being infected by all individuals in its infection neighborhood, calculated by the Euclidean Distance:
+
+
+
+<img src="https://render.githubusercontent.com/render/math?math={(x,y) s.t. \sqrt{(x-x_0)^2 + (y-y_0)^2} \leq r}">
+
+We assume the probability of infection *p* is constant per time step, and each infected individual has a probability *q* to be removed from the population through death. After recovery, each individual becomes immune to the disease.
+
+Susceptible (S) -- has not yet been infected, and has no immunity
+Infected (I) -- currently "sick" and contagious to Susceptible neighbors
+Removed (R), where the removal from further participation in the process is assumed to be permanent, due to death
+Infection neighborhood 
+
+Social distance function 
+
+Sufficient discrete time steps to run the pandemic to completion
+
+
+
+## Simulation Results
+
+## Replicability Information 
+
+### Running the Euclidean Distance Code: Serial Implementation
 
 The code takes argument of N members of the population (defaults to 200 if no number is given)
 
@@ -19,7 +58,7 @@ Run the code, including the members of the population (e.g., N = 100):
 
 The elapsed time will be printed after the results.
 
-## Running the Euclidean Distance Code: OpenMP Implementation
+### Running the Euclidean Distance Code: OpenMP Implementation
 
 I ran it on a t2.2xlarge AWS Ubuntu 16.04 instance. Upload both `euclidean_omp.c` and `timing.c`.
 
@@ -35,7 +74,7 @@ Set the number of threads:
 Run the code, including the members of the population (e.g., N = 100):
 `./eud_omp 100`
 
-## Running the Euclidean Distance Code: MPI Implementation
+### Running the Euclidean Distance Code: MPI Implementation
 
 Set up a distributed AWS cluster following IG7.
 
@@ -55,9 +94,9 @@ Move it to the cloud folder:
 `cp euclidean_mpi cloud && cd cloud`
 
 Run the code:
-`mpirun -np 4 -hosts master2,node2 ./euclidean_mpi 100
+`mpirun -np 4 -hosts master2,node2 ./euclidean_mpi 100`
 
-## Running the Euclidean Distance Code: MPI+OpenMP Implementation
+### Running the Euclidean Distance Code: MPI+OpenMP Implementation
 
 Same setup as 'MPI Implementation'
 
@@ -70,7 +109,7 @@ Move it to the cloud folder:
 Run the code:
 `mpirun -np 4 -hosts master,node1 -genv OMP_NUM_THREADS 2 ./eud_mpi_omp 100`
 
-## Python/C pipeline
+### Python/C pipeline
 
 Compile：
 
@@ -81,11 +120,14 @@ Calling from python:
 `python simulation.py`
 
 
+## Experiments
+
+
+## Conclusions and Recommendations
 
 
 
-
-### References
+## References
 
 We were inspired by the Washington Post article, [**"Why outbreaks like coronavirus spread exponentially, and how to “flatten the curve”**](https://www.washingtonpost.com/graphics/2020/world/corona-simulator/) by Harry Stevens. 
 
