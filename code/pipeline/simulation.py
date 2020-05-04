@@ -107,10 +107,10 @@ while t <= Tfinal:
     ###
     
 
-    contact = np.zeros(N*N)
+    contact = np.zeros(len(x)*len(x))
     f = libf.contact
-    f(x,y,contact,N,r_inf)
-    contact=np.reshape(contact,(N,N))
+    f(x,y,contact,len(x),r_inf)
+    contact=np.reshape(contact,(len(x),len(x)))
 
     
     ###
