@@ -55,7 +55,7 @@ Move it to the cloud folder:
 `cp euclidean_mpi cloud && cd cloud`
 
 Run the code:
-`mpirun -np 4 -hosts master2,node2 ./euclidean_mpi 100 | sort -V`
+`mpirun -np 4 -hosts master2,node2 ./euclidean_mpi 100
 
 ## Running the Euclidean Distance Code: MPI+OpenMP Implementation
 
