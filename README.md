@@ -57,6 +57,8 @@ The parallelizable fraction of the existing code is **92%**.
 
 To fully exploit powerful parallelism techniques for Big Compute, we calculate the Euclidean Distance portion of the code in C. The rest of the simulation is in Python however, so we create a Python/C pipeline by which we run the simulation through Python, but the Euclidean Distance calculation is exported to parallelized C code. 
 
+As such, our experiments will focus on the results of parallelizing **only the subsection of the code which is in C**. We will also run some experiments on the Python/C pipeline.
+
 Here is a snippet of the C code that will be parallelized in subsequent sections:
 
 ![](./Visualizations/03_Code_Snip.png)
@@ -70,7 +72,9 @@ We will demonstrate parallelization using a hybrid system of shared and distribu
 
 ### Amazon Web Services Instance
 
-I ran it on a t2.2xlarge AWS Ubuntu 16.04 instance. You will need to upload both `euclidean.c` and `timing.h`.
+Create a Multi-Node Cluster on AWS using a t2.2xlarge AWS Ubuntu 16.04 instance. Follow the instructions found in [Infrastructure Guide 7: MPI on AWS](https://harvard-iacs.github.io/2020-CS205/lab/I7/guide/Guide_I7.pdf). 
+
+Upload all files found in the `code` folder in this repository. 
 
 **Instance Specs:**
 
@@ -78,7 +82,7 @@ I ran it on a t2.2xlarge AWS Ubuntu 16.04 instance. You will need to upload both
 
 ### Running the Euclidean Distance Code: Serial Implementation
 
-The code takes argument of N members of the population (defaults to 200 if no number is given)
+The code takes argument of N members of the population. 
 
 
 
