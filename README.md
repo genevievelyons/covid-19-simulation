@@ -10,9 +10,12 @@ Note: This is a toy simulation of the spread of an infectious disease, and is no
 
 The purpose of this simulation is to analyze the spread of infectious diseases such as COVID-19 to better understand the way that social distancing may slow the spread for various cities in the United States.
 
-COVID-19 is a respiratory illness that spreads from person to person. Transmission occurs through respiratory droplets, and spread is more likely when people are in close contact with one another. In March, the US government issued a number of social distancing policies and guidelines. These guidelines encourage us to avoid mass gatherings, stay in our homes, and only leave for essential needs. 
+COVID-19 is a respiratory illness that spreads from person to person. Transmission occurs through respiratory droplets, and spread is more likely when people are in close contact with one another. In March, the US government issued a number of social distancing policies and guidelines. These guidelines encourage us to avoid mass gatherings, stay in our homes, and only leave for essential needs. The purpose of these guidelines is to ensure that our healthcare system is not burdened beyond its capacity.
 
 Through this simulation study, we seek to understand how these measures may help to combat the spread of an infectious disease such as this one. 
+
+![Flatten_the_Curve]("./Visualizations/00_Flatten_the_Curve.png")
+
 
 ### SIR Model with a Simple Spatial Network
 
