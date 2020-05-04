@@ -14,7 +14,7 @@ COVID-19 is a respiratory illness that spreads from person to person. Transmissi
 
 Through this simulation study, we seek to understand how these measures may help to combat the spread of an infectious disease such as this one. 
 
-![Flatten_the_Curve]("./Visualizations/00_Flatten_the_Curve.png")
+![](./Visualizations/00_Flatten_the_Curve.png)
 
 
 ### SIR Model with a Simple Spatial Network
@@ -27,6 +27,10 @@ The simulation uses a standard SIR model with a simple spatial network. The SIR 
 
 **Removed (R)**, where the removal from further participation in the process is assumed to be permanent, due to death.
 
+![](./Visualizations/01_SIR_Model.png)
+
+*Source: Maharaj, S., Kleczkowski, A. Controlling epidemic spread by social distancing: Do it well or not at all. BMC Public Health 12, 679 (2012).*
+
 In our model, all individuals are initially susceptible. The pandemic is initiated by a single infected individual at a random location in the network. Each individual has a probability *p* of being infected by any individual in its infection neighborhood, calculated by the Euclidean Distance:
 
 <img src="https://render.githubusercontent.com/render/math?math={(x,y) s.t. \sqrt{(x-x_0)^2 %2B (y-y_0)^2} \leq r}">
@@ -38,7 +42,11 @@ The social distancing function determines the behavior of each individual. A con
 
 ### Need for Big Compute
 
+**Serial Implementation:** This simulation is written serially and in Python. For a population size of N = 2,000, the runtime to pandemic completion is roughly **45 minutes** (about 30 seconds per discrete time step *t*). To model a city such as New York City, where the population density is 26,000 per square mile, the problem size would grow infeasibly large.
 
+**Time Complexity:** <img src="https://render.githubusercontent.com/render/math?math=O(N^2)">
+
+**Code Profiling:** There is a very clear bottleneck in the Euclidean Distance calculation, which is calculated between every individual in the population. 
 
 
 ### Design
