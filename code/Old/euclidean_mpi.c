@@ -18,12 +18,12 @@ int main(int argc, char** argv) {
    double tstart, tend;
    int N;
 
-N  = (argc > 1) ? atoi(argv[1]) : 2000;
+N  = (argc > 1) ? atoi(argv[1]) : 200;
 
    int l = N;
    double x[N],
           y[N];
-   int rank, size, rank_num;
+   int rank, size;
    int iloc, nper;
    int p;
 
@@ -58,58 +58,33 @@ for (i=0; i<N; i++)
    }
 
     tend = MPI_Wtime();
-    
-    
-    
-    
-
 //get_time(&tend);
 
-////if(rank==1){
+//if(rank==1){
 //    MPI_Send(&r, nper*N, MPI_DOUBLE, 0, 1, MPI_COMM_WORLD);
 //}
-//
+
 //if(rank==0){
 //    MPI_Recv(&r, nper*N, MPI_DOUBLE, 0, 1, MPI_COMM_WORLD, &status);
 //}
 
 //FILE* fp = fopen("out.txt", "w+");
-    
-    
-    for (rank_num = 0; rank_num < size; rank_num++){
-        MPI_Barrier(MPI_COMM_WORLD);
-        if (rank_num == rank) {
-                for(i=0; i<nper; i++) {
-                    for(j=0;j<N;j++) {
+
+    for(i=0; i<nper; i++) {
+      for(j=0;j<N;j++) {
 //         fprintf(fp,"r[%d][%d] = %f\n",rank*nper+ i,j, r[i][j]);
-                    printf("r[%d][%d] = %f\n",rank*nper+ i,j, r[i][j]);
-                    }     
-                }
-            printf("Hello World from Rank %d\n", rank);
-            printf("*Elapsed time: %f s\n", tend - tstart);
-
-            
-            
-        }
-    } 
-    MPI_Finalize();
-}
-
-//    for(i=0; i<nper; i++) {
-//      for(j=0;j<N;j++) {
-////         fprintf(fp,"r[%d][%d] = %f\n",rank*nper+ i,j, r[i][j]);
-//         printf("r[%d][%d] = %f\n",rank*nper+ i,j, r[i][j]);
-//      }
-//   }
+         printf("r[%d][%d] = %f\n",rank*nper+ i,j, r[i][j]);
+      }
+   }
 
 //fclose(fp);
 
-//if (rank == 0) {
-//    printf("*A*****************************************************\n");
-//    printf("*Processes: %d\n", size);
-//    printf("*Elapsed time: %f s\n", tend - tstart);
-//}
-//
-//MPI_Finalize();
-//}
+if (rank == 0) {
+    printf("*A*****************************************************\n");
+    printf("*Processes: %d\n", size);
+    printf("*Elapsed time: %f s\n", tend - tstart);
+}
+
+MPI_Finalize();
+}
 
