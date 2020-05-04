@@ -178,6 +178,11 @@ Update any desired parameters or variable in the python simulation script. Run t
 
 ## Experiments
 
+### Weak Scaling
+
+
+### Strong Scaling
+
 
 ## Simulation Results
 
