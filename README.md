@@ -22,7 +22,7 @@ each individual has a probability of being infected by all individuals in its in
 
 
 
-<img src="https://render.githubusercontent.com/render/math?math={(x,y) s.t. \sqrt{(x-x_0)^2 + (y-y_0)^2} \leq r}">
+<img src="https://render.githubusercontent.com/render/math?math={(x,y) s.t. \sqrt{(x-x_0)^2 %2B (y-y_0)^2} \leq r}">
 
 We assume the probability of infection *p* is constant per time step, and each infected individual has a probability *q* to be removed from the population through death. After recovery, each individual becomes immune to the disease.
 
