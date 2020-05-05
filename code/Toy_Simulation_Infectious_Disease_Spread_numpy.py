@@ -102,6 +102,8 @@ while t <= Tfinal:
     plt.scatter(x[immune == 1], y[immune == 1], s = 3, c = "g", label = "Immune")
     plt.scatter(x[infected == 1], y[infected == 1], s = 3, c = "r", label = "Infected")
     plt.title("t = " + str(round(t,1)))
+    plt.xlim((0,1))
+    plt.ylim((0,1))
     plt.legend(loc = 'lower right')
     plt.savefig("../Visualizations/simulation-results/nodist/nodist_" + str(int(round(t,1)*10)) + ".png", format = "png")
     
@@ -256,6 +258,8 @@ while t <= Tfinal:
     plt.scatter(x[infected == 1], y[infected == 1], s = 3, c = "r", label = "Infected")
     plt.title("t = " + str(round(t,1)))
     plt.legend(loc = 'lower right')
+    plt.xlim((0,1))
+    plt.ylim((0,1))
     plt.savefig("../Visualizations/simulation-results/social_dist/social_dist_" + str(int(round(t,1)*10)) + ".png", format = "png")
     
     
@@ -347,13 +351,13 @@ plt.legend()
 plt.savefig("../Visualizations/simulation-results/Infections.png", format = "png")
 
 #Plot Deaths
-plt.cla()
-plt.plot(ts, np.cumsum(num_dead), label = "No Social Distancing")
-plt.plot(ts, np.cumsum(num_dead_sd), label = "With Social Distancing")
-plt.title("Number Dead at time t")
-plt.xlabel("Time (t)")
-plt.legend()
-plt.savefig("../Visualizations/simulation-results/Deaths.png", format = "png")
+#plt.cla()
+#plt.plot(ts, np.cumsum(num_dead), label = "No Social Distancing")
+#plt.plot(ts, np.cumsum(num_dead_sd), label = "With Social Distancing")
+#plt.title("Number Dead at time t")
+#plt.xlabel("Time (t)")
+#plt.legend()
+#plt.savefig("../Visualizations/simulation-results/Deaths.png", format = "png")
 
 
 
