@@ -190,16 +190,19 @@ This simulation demonstrates the benefits of social distancing policies. Underst
 
 Without social distancing policies, we observe that the pandemic comes to a peak comparatively quickly, and at that point **35%** of the population is infected with COVID-19. In a rural community (N = 500), that means that 175 people would be simultaneously infected, and in a metropolitan community such as New York City (N = 26,000), that means that over 9,000 people would be simultaneously infected. For reference, the average rural hospital has 76 beds available, and would service multiple towns, and the average urban hospital has 252 beds available ([Hatten and Connerton: Urban and rural hospitals: How do they differ?](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4191541/)).
 
-After employing social distancing policies, we note a few important trends. First, the peak of the pandemic occurs much later, and the course of the pandemic is significantly elongated. As we know, this would gain us valuable time for preparedness, although it means that we will be following the social distancing guidelines for longer periods of time. Second, at the time of peak, only **15%** of the population is infected. Finally, we notice an interesting second spike on the tail end of the pandemic. This is the "second wave" that many have been speaking of. 
+After employing social distancing policies, we note a few important trends. First, we see that the course of the pandemic is significantly elongated. As we know, this would gain us valuable time for preparedness, although it means that we will be following the social distancing guidelines for longer periods of time. Second, at the time of peak, only **10%** of the population is infected. Finally, we notice an interesting second spike on the tail end of the pandemic. This is the "second wave" that many have been speaking of. 
 
 ![](./Visualizations/simulation-results/Infections.png) 
 
 
 We have visualized our simulation for a small rural community (N = 500). The figure on the left shows the course of the pandemic **without social distancing**, and the figure on the right shows the course of the pandemic **with social distancing**.
 
-![Alt Text](https://github.com/genevievelyons/covid-19-simulation/blob/master/Visualizations/simulation-results/nodist/nodist_sim.gif) ![Alt Text](https://github.com/genevievelyons/covid-19-simulation/blob/master/Visualizations/simulation-results/social_dist/social_dist_sim.gif)
+![Alt Text](https://github.com/genevievelyons/covid-19-simulation/blob/master/Visualizations/simulation-results/nodist/nodist_sim_nomove.gif) ![Alt Text](https://github.com/genevievelyons/covid-19-simulation/blob/master/Visualizations/simulation-results/social_dist/social_dist_sim_nomove.gif)
 
+Based on the results of this study, the convictions of many epidemiologists, and many studies 
 
+we believe that vehement declarations 
+[such as Laura Ingraham claiming that there was no real scientific basis for social distancing](https://www.mediamatters.org/laura-ingraham/laura-ingraham-there-was-no-real-scientific-basis-social-distancing) are easily refutable.
 
 
 ## Conclusions and Recommendations
