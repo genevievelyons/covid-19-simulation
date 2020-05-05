@@ -12,6 +12,8 @@ The purpose of this simulation is to analyze the spread of infectious diseases s
 
 COVID-19 is a respiratory illness that spreads from person to person. Transmission occurs through respiratory droplets, and spread is more likely when people are in close contact with one another. In March, the US government issued a number of social distancing policies and guidelines. These guidelines encourage us to avoid mass gatherings, stay in our homes, and only leave for essential needs. The purpose of these guidelines is to ensure that our healthcare system is not burdened beyond its capacity.
 
+Many studies and experts have demonstrated the effectiveness of these policies, such as [**Impact assessment of non-pharmaceutical interventions against coronavirus disease 2019 and influenza in Hong Kong: an observational study**](https://www.thelancet.com/journals/lanpub/article/PIIS2468-2667(20)30090-6/fulltext?utm_campaign=tlcoronavirus20&utm_content=126713203&utm_medium=social&utm_source=twitter&hss_channel=tw-758678085176795136#%20), [**"Why outbreaks like coronavirus spread exponentially, and how to “flatten the curve”**](https://www.washingtonpost.com/graphics/2020/world/corona-simulator/), and [New York Times interviews with public health / epidemiology experts](https://www.nytimes.com/2020/04/18/health/coronavirus-america-future.html).
+
 Through this simulation study, we seek to understand how these measures may help to combat the spread of an infectious disease such as this one. 
 
 ![](./Visualizations/00_Flatten_the_Curve.png)
@@ -199,9 +201,7 @@ We have visualized our simulation for a small rural community (N = 500). The fig
 
 ![Alt Text](https://github.com/genevievelyons/covid-19-simulation/blob/master/Visualizations/simulation-results/nodist/nodist_sim_nomove.gif) ![Alt Text](https://github.com/genevievelyons/covid-19-simulation/blob/master/Visualizations/simulation-results/social_dist/social_dist_sim_nomove.gif)
 
-Based on the results of this study, the convictions of many epidemiologists, and many studies 
-
-we believe that vehement declarations 
+Based on the results of this study, the convictions of many epidemiologists, and many studies supporting our findings, we believe that vehement declarations 
 [such as Laura Ingraham claiming that there was no real scientific basis for social distancing](https://www.mediamatters.org/laura-ingraham/laura-ingraham-there-was-no-real-scientific-basis-social-distancing) are easily refutable.
 
 
