@@ -81,6 +81,54 @@ Upload all files found in the `code` folder in this repository. The C code `eucl
 **Instance Specs:**
 
 
+Architecture:          x86_64
+
+CPU op-mode(s):        32-bit, 64-bit
+
+Byte Order:            Little Endian
+
+CPU(s):                8
+
+On-line CPU(s) list:   0-7
+
+Thread(s) per core:    1
+
+Core(s) per socket:    8
+
+Socket(s):             1
+
+NUMA node(s):          1
+
+Vendor ID:             GenuineIntel
+
+CPU family:            6
+
+Model:                 79
+
+Model name:            Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+
+Stepping:              1
+
+CPU MHz:               2300.040
+
+BogoMIPS:              4600.08
+
+Hypervisor vendor:     Xen
+
+Virtualization type:   full
+
+L1d cache:             32K
+
+L1i cache:             32K
+
+L2 cache:              256K
+
+L3 cache:              46080K
+
+NUMA node0 CPU(s):     0-7
+
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_t
+
 
 ### Running the Euclidean Distance Code: Serial Implementation
 
