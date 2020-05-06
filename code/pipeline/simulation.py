@@ -2,13 +2,9 @@
 # -*- coding: utf-8 -*-
 """
 Toy Simulation Model - Infectious Disease Spread
-
 Created on Mon Mar 30 13:33:40 2020
-
 @author: genevievelyons
-
 Inspired by / adapted from: Philip Mocz, Princeton University - https://github.com/pmocz/coronavirusToySimulation
-
 """
 
 #%%
@@ -18,9 +14,13 @@ from numpy.ctypeslib import ndpointer
 import numpy as np
 import matplotlib.pyplot as plt
 import datetime
+import os
+import timeit
 
-
-libf = ctypes.cdll.LoadLibrary('euclidean_IO.so')
+os.environ['LD_LIBRARY_PATH'] = 'homw/ubuntu/lib'
+print(os.environ['LD_LIBRARY_PATH'])
+#libf = ctypes.cdll.LoadLibrary('euclidean_IO.so')
+libf = ctypes.cdll.LoadLibrary('euclidean_omp_IO.so')
 libf.contact.restype = ctypes.c_double
 libf.contact.argtypes = [ ndpointer(ctypes.c_double), ndpointer(ctypes.c_double),ndpointer(ctypes.c_double),ctypes.c_int,ctypes.c_double]
 
@@ -185,6 +185,3 @@ plt.show();
 plt.plot(ts, np.cumsum(num_dead))
 plt.title("Number Dead at time t")
 plt.show();
-
-
-
