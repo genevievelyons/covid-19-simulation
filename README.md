@@ -177,6 +177,19 @@ Compile the code：
 Update any desired parameters or variable in the python simulation script. Run the simulation script, calling the C code from Python:
 `python simulation.py`
 
+#### pipeline+OpenMP
+
+create a folder 'lib' to store the C library file `mkdir lib`
+
+set the default library path to that folder `export LD_LIBRARY_PATH=/home/ubuntu/lib`
+
+compile the code `gcc -fPIC -c -fopenmp euclidean_omp_IO.c`
+
+set the number of threads `export OMP_NUM_THREADS=8`
+
+convert the C file to a library object `gcc -shared -o /home/ubuntu/lib/euclidean_omp_IO.so /home/ubuntu/euclidean_omp_IO.o -fopenmp`
+
+call the C file from python `python3 simulation.py`
 
 ## Experiments
 
