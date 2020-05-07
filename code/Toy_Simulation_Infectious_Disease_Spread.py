@@ -325,6 +325,8 @@ plt.cla()
 plt.plot(ts, np.array(num_infected) / N, label = "No Social Distancing")
 plt.plot(ts, np.array(num_infected_sd) / N, label = "With Social Distancing")
 plt.title("Percent of Population Infected at time t")
+plt.xlabel("Time (t)")
+plt.legend()
 plt.savefig("../Visualizations/simulation-results/Infections.png", format = "png")
 
 #Plot Deaths
@@ -332,6 +334,8 @@ plt.cla()
 plt.plot(ts, np.cumsum(num_dead), label = "No Social Distancing")
 plt.plot(ts, np.cumsum(num_dead_sd), label = "With Social Distancing")
 plt.title("Number Dead at time t")
+plt.xlabel("Time (t)")
+plt.legend()
 plt.savefig("../Visualizations/simulation-results/Deaths.png", format = "png")
 
 
