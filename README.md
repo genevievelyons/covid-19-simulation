@@ -283,14 +283,14 @@ call the C file from python `python3 simulation.py`
 | --- | --- |---|---|---|---|---|---|---|
 | 0| 0.104764 | 0.052442 | 0.0351157 | 0.0264497 | 0.0211322 | 0.0175604 | 0.0151527 | 0.0132662 |
 
-![](./Visualizations/experiment_results/result-ss-omp-2.png)
+![](./Visualizations/experiment_results/result-ss-omp-3.png)
 
 #### MPI - two nodes
 | # of tasks | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8| 
 | --- | --- |---|---|---|---|---|---|---|
 | | 0.120043 | 0.059907 | 0.040406 |0.030658 | 0.023996  |0.019987 | 0.017079 | 0.015065 |
 
-![](./Visualizations/experiment_results/result-ss-mpi-2.png)
+![](./Visualizations/experiment_results/result-ss-mpi-3.png)
 
 #### Hybrid
 
@@ -302,12 +302,12 @@ call the C file from python `python3 simulation.py`
 
 8 task, 1 threads:
 
-#### Pipeline - OMP
+#### Pipeline - OMP (N=14000)
 | # of threads | 2 | 3 | 4 | 5 | 6 | 7 | 8| 
 | --- | --- |---|---|---|---|---|---|
-| | 0.058 | 0.039 | 0.029 | 0.023 | 0.025 | 0.036 | 0.032|
+| |2.8619| 1.9105 | 1.4314 | 1.1495 | 0.9575 | 0.8735 | 0.774 |
 
-![](./Visualizations/experiment_results/result-ss-pipeline.png)
+![](./Visualizations/experiment_results/result-ss-pipeline-2.png)
 
 ## Simulation Results
 
