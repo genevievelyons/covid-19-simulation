@@ -2,8 +2,6 @@
 ### Jingyi Chen, Genevieve Lyons, Rebecca Youngerman, Huahua Zheng
 ### Harvard T.H. Chan School of Public Health
 
-## Check out our [WEBSITE](https://ryoungerman8.wixsite.com/cs205finalproject)! It contains all the same information as below (but is much prettier).
-
 Note: This is a toy simulation of the spread of an infectious disease, and is not intended to represent any particular geographic location or use parameters that are scientifically accurate for COVID-19.
 
 ## Introduction
@@ -204,9 +202,6 @@ Export the ports so the master and node can communicate:
 
 `export MPIR_CVAR_CH3_PORT_RANGE=10000:10100`
 
-Don't forget to use dynamic scheduling:
-`export OMP_SCHEDULE=dynamic`
-
 Compile the code on mpiuser@master:
 `mpicc -DUSE_CLOCK -fopenmp euclidean_mpi_omp.c timing.c -lm -o eud_mpi_omp`
 
@@ -274,10 +269,10 @@ call the C file from python `python3 simulation.py`
 #### Pipeline - OMP
 | N/threads  | 500 | 2000 | 14000 | 26000 |
 | ---------- | ----|------|-------|-------|
-| 1 | 0.0075 | 0.1168 | 5.7586 | 19.7362 |
-| 2 | 0.0038 | 0.058 | 2.8596 | 9.8365 |
-| 4 | 0.0019 | 0.0293 | 1.4301 | 4.9297 |
-| 8 | 0.0052 | 0.032 | 0.774 | 2.481 | 
+| 1 | 1.8 | 12.93 | 606 | 2105 |
+| 2 | 1.63 | 9.64 | 440 | 1503 |
+| 4 | 1.55 | 7.82 | 354 | 1208 |
+| 8 | 1.76 | 8.07 | 313 | 1061 | 
 
 ![](./Visualizations/experiment_results/result-ws-pipeline.png)
 
@@ -297,29 +292,21 @@ call the C file from python `python3 simulation.py`
 
 ![](./Visualizations/experiment_results/result-ss-mpi-3.png)
 
-#### Hybrid (N=26000: New York City)
-
+#### Hybrid
 
 2 cores, 2 thread (1 thread/core): 12.779103 s
-
 2 cores, 4 threads (2 threads/core): 10.085558 s
-
-
 4 cores, 4 threads (1 thread/core): 8.677512 s
-
 4 cores, 8 threads (2 threads/core): 5.500008 s
-
-
 8 cores, 8 threads (1 thread/core): 3.066303 s
-
 8 cores, 16 threads (2 threads/core): 2.556881 s
 
-
+![](./Visualizations/experiment_results/result-hybrid.png)
 
 #### Pipeline - OMP (N=14000)
 | # of threads | 2 | 3 | 4 | 5 | 6 | 7 | 8| 
 | --- | --- |---|---|---|---|---|---|
-| |2.8619| 1.9105 | 1.4314 | 1.1495 | 0.9575 | 0.8735 | 0.774 |
+| |440| 382 | 354 | 334 | 321 | 317 | 313 |
 
 ![](./Visualizations/experiment_results/result-ss-pipeline-2.png)
 
