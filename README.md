@@ -2,6 +2,8 @@
 ### Jingyi Chen, Genevieve Lyons, Rebecca Youngerman, Huahua Zheng
 ### Harvard T.H. Chan School of Public Health
 
+## Check out our [WEBSITE](https://ryoungerman8.wixsite.com/cs205finalproject)! (Has the same information as is below, but much prettier.)
+
 Note: This is a toy simulation of the spread of an infectious disease, and is not intended to represent any particular geographic location or use parameters that are scientifically accurate for COVID-19.
 
 ## Introduction
@@ -195,6 +197,8 @@ In `mpiuser@master`:
 
 First, increase the user limit:
 `ulimit -s unlimited`
+
+Don't forget to use dynamic scheduling: `export OMP_SCHEDULE=dynamic`
 
 Export the ports so the master and node can communicate:
 
