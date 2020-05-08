@@ -295,10 +295,15 @@ call the C file from python `python3 simulation.py`
 #### Hybrid
 
 2 cores, 2 thread (1 thread/core): 12.779103 s
+
 2 cores, 4 threads (2 threads/core): 10.085558 s
+
 4 cores, 4 threads (1 thread/core): 8.677512 s
+
 4 cores, 8 threads (2 threads/core): 5.500008 s
+
 8 cores, 8 threads (1 thread/core): 3.066303 s
+
 8 cores, 16 threads (2 threads/core): 2.556881 s
 
 ![](./Visualizations/experiment_results/result-hybrid.png)
