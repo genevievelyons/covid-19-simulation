@@ -2,7 +2,7 @@
 ### Jingyi Chen, Genevieve Lyons, Rebecca Youngerman, Huahua Zheng
 ### Harvard T.H. Chan School of Public Health
 
-## Check out our [WEBSITE](https://ryoungerman8.wixsite.com/cs205finalproject)! 
+## Check out our [WEBSITE](https://ryoungerman8.wixsite.com/cs205finalproject)! It contains all the same information as below (but is much prettier).
 
 Note: This is a toy simulation of the spread of an infectious disease, and is not intended to represent any particular geographic location or use parameters that are scientifically accurate for COVID-19.
 
