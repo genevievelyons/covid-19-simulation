@@ -202,6 +202,9 @@ Export the ports so the master and node can communicate:
 
 `export MPIR_CVAR_CH3_PORT_RANGE=10000:10100`
 
+Don't forget to use dynamic scheduling:
+`export OMP_SCHEDULE=dynamic`
+
 Compile the code on mpiuser@master:
 `mpicc -DUSE_CLOCK -fopenmp euclidean_mpi_omp.c timing.c -lm -o eud_mpi_omp`
 
@@ -292,15 +295,24 @@ call the C file from python `python3 simulation.py`
 
 ![](./Visualizations/experiment_results/result-ss-mpi-3.png)
 
-#### Hybrid
+#### Hybrid (N=26000: New York City)
 
-1 task, 8 threads: 0.168863s
 
-2 task, 4 threads: 0.071312s
+2 cores, 2 thread (1 thread/core): 12.779103 s
 
-4 task, 2 threads: 0.038502s 
+2 cores, 4 threads (2 threads/core): 10.085558 s
 
-8 task, 1 threads: 0.011681s
+
+4 cores, 4 threads (1 thread/core): 8.677512 s
+
+4 cores, 8 threads (2 threads/core): 5.500008 s
+
+
+8 cores, 8 threads (1 thread/core): 3.066303 s
+
+8 cores, 16 threads (2 threads/core): 2.556881 s
+
+
 
 #### Pipeline - OMP (N=14000)
 | # of threads | 2 | 3 | 4 | 5 | 6 | 7 | 8| 
