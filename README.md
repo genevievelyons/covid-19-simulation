@@ -294,13 +294,13 @@ call the C file from python `python3 simulation.py`
 
 #### Hybrid
 
-1 task, 8 threads:
+1 task, 8 threads: 0.168863s
 
-2 task, 4 threads:
+2 task, 4 threads: 0.071312s
 
-4 task, 2 threads:
+4 task, 2 threads: 0.038502s 
 
-8 task, 1 threads:
+8 task, 1 threads: 0.011681s
 
 #### Pipeline - OMP (N=14000)
 | # of threads | 2 | 3 | 4 | 5 | 6 | 7 | 8| 
