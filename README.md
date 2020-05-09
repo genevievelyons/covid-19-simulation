@@ -261,6 +261,8 @@ call the C file from python `python3 simulation.py`
 
 ![](./Visualizations/experiment_results/result-ws-omp.png)
 
+We can see as that the speedup grows with the size of the problem. As problem size increases, the synchronization overhead due to creation/control of threads becomes lower compared with the computing in each time step.
+
 #### MPI - single node
 | N/tasks  | 500 | 2000 | 14000 | 26000 |
 | ---------- | ----|------|-------|-------|
@@ -288,6 +290,8 @@ call the C file from python `python3 simulation.py`
 | 0| 0.104764 | 0.052442 | 0.0351157 | 0.0264497 | 0.0211322 | 0.0175604 | 0.0151527 | 0.0132662 |
 
 ![](./Visualizations/experiment_results/result-ss-omp-3.png)
+
+OpenMP reaches a neal optimal speedup for strong scaling. This indicates that the communication/synchronization cost is negligible in our case. 
 
 #### MPI - two nodes
 | # of tasks | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8| 
