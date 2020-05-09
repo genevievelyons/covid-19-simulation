@@ -243,44 +243,7 @@ convert the C file to a library object `gcc -shared -o /home/ubuntu/lib/euclidea
 
 call the C file from python `python3 simulation.py`
 
-## Experiments
-
-### Weak Scaling
-
-#### Serial
-| N/threads  | 500 | 2000 | 14000 | 26000 |
-| ---------- | ----|------|-------|-------|
-|  | 0.006557 | 0.1| 5.0395 | 17.422 |
-
-#### OpenMP
-| N/threads  | 500 | 2000 | 14000 | 26000 |
-| ---------- | ----|------|-------|-------|
-| 2 | 0.00331253 | 0.052442 | 2.58289 | 8.77539 |
-| 4 | 0.00167364 | 0.0264497 | 1.28463 | 4.40093 |
-| 8 | 0.000937424 | 0.0132662 | 0.639876 | 2.21066 | 
-
-![](./Visualizations/experiment_results/result-ws-omp.png)
-
-We can see as that the speedup grows with the size of the problem. As problem size increases, the synchronization overhead due to creation/control of threads becomes lower compared with the computing in each time step.
-
-#### MPI - single node
-| N/tasks  | 500 | 2000 | 14000 | 26000 |
-| ---------- | ----|------|-------|-------|
-| 2 | 0.003757  | 0.060158 | 2.980379 | 10.120353 |
-| 4 | 0.001895 | 0.030686 | 1.475987 | 5.081657 |
-| 8 | 0.000939 | 0.015082 | 0.742917 | 2.540809 |
-
-![](./Visualizations/experiment_results/result-ws-mpi.png)
-
-#### Pipeline - OMP
-| N/threads  | 500 | 2000 | 14000 | 26000 |
-| ---------- | ----|------|-------|-------|
-| 1 | 1.8 | 12.93 | 606 | 2105 |
-| 2 | 1.63 | 9.64 | 440 | 1503 |
-| 4 | 1.55 | 7.82 | 354 | 1208 |
-| 8 | 1.76 | 8.07 | 313 | 1061 | 
-
-![](./Visualizations/experiment_results/result-ws-pipeline.png)
+## Experiments and Discussion
 
 ### Strong Scaling (N=2000)
 
@@ -322,6 +285,43 @@ OpenMP reaches a neal optimal speedup for strong scaling. This indicates that th
 | |440| 382 | 354 | 334 | 321 | 317 | 313 |
 
 ![](./Visualizations/experiment_results/result-ss-pipeline-2.png)
+
+### Weak Scaling
+
+#### Serial (seconds)
+| N/threads  | 500 | 2000 | 14000 | 26000 |
+| ---------- | ----|------|-------|-------|
+|  | 0.006557 | 0.1| 5.0395 | 17.422 |
+ 
+#### OpenMP (seconds)
+| N/threads  | 500 | 2000 | 14000 | 26000 |
+| ---------- | ----|------|-------|-------|
+| 2 | 0.00331253 | 0.052442 | 2.58289 | 8.77539 |
+| 4 | 0.00167364 | 0.0264497 | 1.28463 | 4.40093 |
+| 8 | 0.000937424 | 0.0132662 | 0.639876 | 2.21066 | 
+
+![](./Visualizations/experiment_results/result-ws-omp.png)
+
+We can see as that the speedup grows with the size of the problem. As problem size increases, the synchronization overhead due to creation/control of threads becomes lower compared with the computing in each time step. 
+
+#### MPI - single node
+| N/tasks  | 500 | 2000 | 14000 | 26000 |
+| ---------- | ----|------|-------|-------|
+| 2 | 0.003757  | 0.060158 | 2.980379 | 10.120353 |
+| 4 | 0.001895 | 0.030686 | 1.475987 | 5.081657 |
+| 8 | 0.000939 | 0.015082 | 0.742917 | 2.540809 |
+
+![](./Visualizations/experiment_results/result-ws-mpi.png)
+
+#### Pipeline - OMP
+| N/threads  | 500 | 2000 | 14000 | 26000 |
+| ---------- | ----|------|-------|-------|
+| 1 | 1.8 | 12.93 | 606 | 2105 |
+| 2 | 1.63 | 9.64 | 440 | 1503 |
+| 4 | 1.55 | 7.82 | 354 | 1208 |
+| 8 | 1.76 | 8.07 | 313 | 1061 | 
+
+![](./Visualizations/experiment_results/result-ws-pipeline.png)
 
 ## Simulation Results
 
