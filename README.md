@@ -327,6 +327,14 @@ We can see as that the speed-up grows with the size of the problem. As problem s
 
 MPI is different from our OpenMP results as even with our largest problem size we do not see an increase in speed-up (the green bars are all about the same height). This can be attributed to the overheads (I/O, communication, synchronization) of MPI, which are larger as the problem size increases as we are not using shared memory. This counteracts the additional speed-up that we saw with OpenMP. 
 
+#### Hybrid - 8 cores, 8 threads
+
+| N | 500 | 2000 | 14000 | 26000 |
+| ---------- | ----|------|-------|-------|
+| | 0.015991 | 0.038632 | 0.815790 | 2.675975 |
+
+![](./Visualizations/experiment_results/result-ws-hybrid.png)
+
 #### Pipeline - OMP (seconds)
 | N/threads  | 500 | 2000 | 14000 | 26000 |
 | ---------- | ----|------|-------|-------|
