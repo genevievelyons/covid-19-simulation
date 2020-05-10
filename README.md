@@ -335,6 +335,8 @@ MPI is different from our OpenMP results as even with our largest problem size w
 
 ![](./Visualizations/experiment_results/result-ws-hybrid.png)
 
+For our hybrid weak scaling, we chose to run on 8 cores and 8 threads (1 thread/core) in order to observe its speed-up. This is because we saw with previous weak scaling examples that there was the most meaningful speed-up (if any) as we worked accross more threads. We see really good speed-up here, though it flattens out with our two largest problem sizes of Boston and NYC. For 8 threads, this seems to be a point where the overheads that we have mentioned for OpenMP and MPI really impact the ability to see speed-up. This could lead to a recommendation to increase computational power beyond 8 threads once the simulation is run on areas as dense as cities. 
+
 #### Pipeline - OMP (seconds)
 | N/threads  | 500 | 2000 | 14000 | 26000 |
 | ---------- | ----|------|-------|-------|
