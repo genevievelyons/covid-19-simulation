@@ -4,7 +4,7 @@
 
 ## Check out our [WEBSITE](https://ryoungerman8.wixsite.com/cs205finalproject)! (Has the same information as is below, but much prettier.)
 
-Note: This is a toy simulation of the spread of an infectious disease, and is not intended to represent any particular geographic location or use parameters that are scientifically accurate for COVID-19.
+Note: This is a toy simulation of the spread of an infectious disease and is not intended to represent any particular geographic location or use parameters that are scientifically accurate for COVID-19.
 
 ## Introduction
 
@@ -254,7 +254,7 @@ call the C file from python `python3 simulation.py`
 
 ![](./Visualizations/experiment_results/result-ss-omp-3.png)
 
-OpenMP reaches a nearly optimal speedup for strong scaling. This indicates that the communication/synchronization cost is negligible in our case. This is because the program is embarassingly parallel. The communication cost is limited to the I/O operation of splitting the task across the many threads. There is no communication/synchronization cost during the process that would greatly impact performance in non-embarassingly parallel applications.  
+OpenMP reaches a nearly optimal speedup for strong scaling. This indicates that the communication/synchronization cost is negligible in our case. This is because the program is embarrassingly parallel. The communication cost is limited to the I/O operation of splitting the task across the many threads. There is no communication/synchronization cost during the process that would greatly impact performance in non-embarrassingly parallel applications.  
 
 #### MPI - two nodes (seconds)
 | # of tasks | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8| 
@@ -263,7 +263,7 @@ OpenMP reaches a nearly optimal speedup for strong scaling. This indicates that 
 
 ![](./Visualizations/experiment_results/result-ss-mpi-3.png)
 
-We see an increasing speed-up that, expectedly, does not meet the theoretical expectation. There is increase I/O cost as we scale up accross more nodes and cores. This is because we must transmit the data between processes. We observed over 6-times speed-up over 8 cores. However, it's notable that because there is no communication/synchronization within each task the speed-up plot is lienar and not flattening off as we would expect in a non-embarassingly parallel MPI implementation.  
+We see an increasing speed-up that, expectedly, does not meet the theoretical expectation. There is increase I/O cost as we scale up across more nodes and cores. This is because we must transmit the data between processes. We observed over 6-times speed-up over 8 cores. However, it's notable that because there is no communication/synchronization within each task the speed-up plot is linear and not flattening off as we would expect in a non-embarrassingly parallel MPI implementation.  
 
 #### Hybrid
 
@@ -281,7 +281,7 @@ We see an increasing speed-up that, expectedly, does not meet the theoretical ex
 
 ![](./Visualizations/experiment_results/result-hybrid.png)
 
-The hybrid OpenMP-MPI implementation shows an increasing speed-up with our number of threads and cores. We see our greatest speed-up when we increase the cores, not when we retain the number of cores and only increase our threads. For example, between 4 cores, 4 threads (1 thread per core) and 4 cores, 8 threads (two threads per core) we see a movement from around 2-times speed-up to 3-times speed up. If we compare 4 cores, 4 threads with 8 cores, 8 threads (so, both with 1 thread per core), we see even greater than doubling from around 2-times speed-up to over 5-times speed-up. We extrapolate that we do not see anywhere near linear speed-up with increased threads per core becasue we are retaining the overheads of I/O, communication, etc. involved with multiple cores. Our best attainable speed-up is around 7-times as we fully saturate our available CPUs. 
+The hybrid OpenMP-MPI implementation shows an increasing speed-up with our number of threads and cores. We see our greatest speed-up when we increase the cores, not when we retain the number of cores and only increase our threads. For example, between 4 cores, 4 threads (1 thread per core) and 4 cores, 8 threads (two threads per core) we see a movement from around 2-times speed-up to 3-times speed up. If we compare 4 cores, 4 threads with 8 cores, 8 threads (so, both with 1 thread per core), we see even greater than doubling from around 2-times speed-up to over 5-times speed-up. We extrapolate that we do not see anywhere near linear speed-up with increased threads per core because we are retaining the overheads of I/O, communication, etc. involved with multiple cores. Our best attainable speed-up is around 7-times as we fully saturate our available CPUs. 
 
 #### Pipeline - OMP (seconds) (N=14000)
 | # of threads | 2 | 3 | 4 | 5 | 6 | 7 | 8| 
@@ -290,7 +290,7 @@ The hybrid OpenMP-MPI implementation shows an increasing speed-up with our numbe
 
 ![](./Visualizations/experiment_results/result-ss-pipeline-2.png)
 
-The pipeline takes the Python script that generates the location of each simulated individual, exports that information to C, and pulls the Euclidean distance results back to Python at every time step. Note that we were able to implement this pipeline with our OpenMP results, but not with MPI. This would be a great next step for the project. We were anticipating increased I/O to be associated with the pipeline, but saw that the speed-up of parallelizing in C was a worthwhile endeavor. We were then surprised to see the speed-up flattening out around 2-times. However, upon further reflection this makes sense. 
+The pipeline takes the Python script that generates the location of each simulated individual, exports that information to C, and pulls the Euclidean distance results back to Python at every time step. Note that we were able to implement this pipeline with our OpenMP results, but not with MPI. This would be a great next step for the project. We were anticipating increased I/O to be associated with the pipeline but saw that the speed-up of parallelizing in C was a worthwhile endeavor. We were then surprised to see the speed-up flattening out around 2-times. However, upon further reflection this makes sense. 
 
 We saw that 92% of our Python code was parallelizable. This was back when our Euclidean distance calculation was taking 45 seconds (when it was massively inefficient in the serial Python code). It is notable that simply changing our program from a Python for-loop to a C for-loop decreased our computation time **significantly**. This was over 40-times - from a 45 second runtime to less than a second when moving from serial Python to serial C code. 
 
@@ -314,7 +314,7 @@ Now, the parallelized Euclidean distance operation is going so much faster that 
 
 ![](./Visualizations/experiment_results/result-ws-omp.png)
 
-We can see as that the speed-up grows with the size of the problem. As problem size increases, the synchronization overhead due to creation/control of threads becomes lower compared with the computing in each time step. It is interesting that weak scaling has better speed-up when looking at 8 threads. We see this as our blue bars are flat (2 threads) and our orange bars are flat (4 threads), but the green bars indicating 8 threads incrase from around 7-times to 8-times speed-up. We see better speed-up for bigger problem sizes because lightweight tasks benefit less from parallelization due to their overall small computation time. 
+We can see as that the speed-up grows with the size of the problem. As problem size increases, the synchronization overhead due to creation/control of threads becomes lower compared with the computing in each time step. It is interesting that weak scaling has better speed-up when looking at 8 threads. We see this as our blue bars are flat (2 threads) and our orange bars are flat (4 threads), but the green bars indicating 8 threads increase from around 7-times to 8-times speed-up. We see better speed-up for bigger problem sizes because lightweight tasks benefit less from parallelization due to their overall small computation time. 
 
 #### MPI - single node (seconds)
 | N/tasks  | 500 | 2000 | 14000 | 26000 |
@@ -335,7 +335,7 @@ MPI is different from our OpenMP results as even with our largest problem size w
 
 ![](./Visualizations/experiment_results/result-ws-hybrid.png)
 
-For our hybrid weak scaling, we chose to run on 8 cores and 8 threads (1 thread/core) in order to observe its speed-up. This is because we saw with previous weak scaling examples that there was the most meaningful speed-up (if any) as we worked accross more threads. We see really good speed-up here, though it flattens out with our two largest problem sizes of Boston and NYC. For 8 threads, this seems to be a point where the overheads that we have mentioned for OpenMP and MPI really impact the ability to see speed-up. This could lead to a recommendation to increase computational power beyond 8 threads once the simulation is run on areas as dense as cities. 
+For our hybrid weak scaling, we chose to run on 8 cores and 8 threads (1 thread/core) in order to observe its speed-up. This is because we saw with previous weak scaling examples that there was the most meaningful speed-up (if any) as we worked across more threads. We see really good speed-up here, though it flattens out with our two largest problem sizes of Boston and NYC. For 8 threads, this seems to be a point where the overheads that we have mentioned for OpenMP and MPI really impact the ability to see speed-up. This could lead to a recommendation to increase computational power beyond 8 threads once the simulation is run on areas as dense as cities. 
 
 #### Pipeline - OMP (seconds)
 | N/threads  | 500 | 2000 | 14000 | 26000 |
@@ -347,7 +347,7 @@ For our hybrid weak scaling, we chose to run on 8 cores and 8 threads (1 thread/
 
 ![](./Visualizations/experiment_results/result-ws-pipeline.png)
 
-With our pipeline, we do see increased speed-up with the problem size. This follows what was seen with OpenMP's weak scaling. Again, though, we do not see the same increases due to the pipeline's bottlenck within the Python code. We are attaining that same speed-up in the OpenMP section, but with the surrounding communication and slower Python operations the increase is stunted. Please see our discussion of strong scaling pipeline results for more information on this observation.
+With our pipeline, we do see increased speed-up with the problem size. This follows what was seen with OpenMP's weak scaling. Again, though, we do not see the same increases due to the pipeline's bottleneck within the Python code. We are attaining that same speed-up in the OpenMP section, but with the surrounding communication and slower Python operations the increase is stunted. Please see our discussion of strong scaling pipeline results for more information on this observation.
 
 ## Simulation Results
 
